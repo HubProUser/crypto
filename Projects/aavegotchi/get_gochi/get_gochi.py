@@ -18,9 +18,9 @@ def get_aave():
 
     while True:
         w3 = Web3(Web3.HTTPProvider('https://polygon-rpc.com'))  # get poligon
-        cnt = w3.eth.contract(address=w3.toChecksumAddress('0x86935F11C86623deC8a25696E1C19a8659CbF95d'), abi=ABI)  # get contract info
+        cnt = w3.eth.contract(address=w3.toChecksumAddress('*********'), abi=ABI)  # get contract info
 
-        acct = w3.eth.account.privateKeyToAccount('e1ccc7dbdeb7f933054e73a43c7b464b58079cd8c95da79f1829f4edc50fe6f9')  # get my private key
+        acct = w3.eth.account.privateKeyToAccount('**********')  # get my private key
 
         gchs = cnt.functions.getGotchiLendings(b'listed', 200).call()  # get list of 1000 last-listed gochies
         free_g = [a for a in gchs if ((a[1] <= 0.1) and (a[-4][1] >= 75) and (a[5] == 0))]  # search for gochi

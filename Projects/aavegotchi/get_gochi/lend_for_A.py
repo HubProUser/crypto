@@ -7,10 +7,10 @@ import requests
 def get_aave():
     while True:
         w3 = Web3(Web3.HTTPProvider('https://polygon-rpc.com'))  # get poligon
-        cnt = w3.eth.contract(address=w3.toChecksumAddress('0x86935F11C86623deC8a25696E1C19a8659CbF95d'), abi=ABI)
-        acct = w3.eth.account.privateKeyToAccount('e1ccc7dbdeb7f933054e73a43c7b464b58079cd8c95da79f1829f4edc50fe6f9')
+        cnt = w3.eth.contract(address=w3.toChecksumAddress('*********'), abi=ABI)
+        acct = w3.eth.account.privateKeyToAccount('*********')
         gchs = cnt.functions.getGotchiLendings(b'listed', 200).call()
-        aave = [a for a in gchs if ((a[0] == '0x86A9EbD5e233156243ADF4c31491631B14Ea9E71') and (a[5] != 0) and (a[1] == 0))]
+        aave = [a for a in gchs if ((a[0] == '*********') and (a[5] != 0) and (a[1] == 0))]
 
         if len(aave) > 0:
             c_trans = cnt.functions.agreeGotchiLending(aave[0][3], aave[0][4], aave[0][1], aave[0][-2], aave[0][-4]).buildTransaction({'from': acct.address, 'maxFeePerGas': int(w3.eth.gasPrice * 1.1),'nonce': w3.eth.getTransactionCount(acct.address), 'gas': 500000})  # create transaction
